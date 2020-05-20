@@ -6,4 +6,6 @@
 
 .employee-list img{
     width: 250 px;
+    float: left;
+    margin-right: 5px;
 }

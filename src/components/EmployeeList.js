@@ -3,12 +3,21 @@ import "./EmployeeList.css"
 
 const EmployeeList = (props) => {
 
-    const employeeImg = props.employees.map(({ email, picture }) => {
-        console.log(picture.medium)
-        return <img key={email} src={picture.medium} />
+    const employeeImg = props.employees.map(({ email, name, picture }) => {
+        return (
+            <div key={email}>
+                <img src={picture.medium} />
+                <span>{name.first}, {name.last}</span>
+                <br />
+                <span>{email}</span>
+            </div>
+        )
     })
+
     return (
-        <div className="employee-list">{employeeImg}</div>
+        <div className="employee-list">
+            {employeeImg}
+        </div>
     )
 }
 

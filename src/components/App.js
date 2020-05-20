@@ -9,12 +9,16 @@ class App extends React.Component {
 
     componentDidMount = async () => {
         const response = await Employees.get("?results=200&nat=us&inc=gender,name,nat,location,email,picture,dob")
-        console.log(response.data.results)
         this.setState({ employees: response.data.results })
     }
 
-    onSearchSubmit(term) {
-        console.log(term)
+    onSearchSubmit = (term) => {
+
+        let searchEmployeeList = this.state.employees.filter(employee => {
+            return employee.email.indexOf(term.toLowerCase()) !== -1
+        })
+        console.log(searchEmployeeList)
+        this.setState({ employees: searchEmployeeList })
     }
 
 
@@ -22,7 +26,6 @@ class App extends React.Component {
         return (
             <div className="ui container" style={{ marginTop: "10px" }}>
                 <SearchBar onSubmit={this.onSearchSubmit} />
-                {/* found: {this.state.employees} */}
                 < EmployeeList employees={this.state.employees} />
             </div >
         );
