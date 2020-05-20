@@ -5,17 +5,18 @@ const EmployeeList = (props) => {
 
     const employeeImg = props.employees.map(({ email, name, picture }) => {
         return (
-            <div key={email}>
+            <button key={email} >
                 <img src={picture.medium} />
                 <span>{name.first}, {name.last}</span>
                 <br />
                 <span>{email}</span>
-            </div>
+            </button>
         )
     })
 
+
     return (
-        <div className="employee-list">
+        <div className="employee-list" >
             {employeeImg}
         </div>
     )
