@@ -3,13 +3,18 @@ import "./EmployeeList.css"
 
 const EmployeeList = (props) => {
 
-    const employeeImg = props.employees.map(({ email, name, picture }) => {
+    const employeeImg = props.employees.map(({ email, name, picture, phone, dob }) => {
+
         return (
-            <button key={email} >
-                <img src={picture.medium} />
-                <span>{name.first}, {name.last}</span>
+            <button className="content" key={email} >
+                <img className="avatar" src={picture.medium} />
+                <span className="author" >{name.first}, {name.last}</span>
                 <br />
-                <span>{email}</span>
+                <span className="text">{email}</span>
+                <br />
+                <span>{phone}</span>
+                <br />
+                <span>{dob.date.substring(0, 10)}</span>
             </button>
         )
     })
