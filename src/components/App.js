@@ -15,12 +15,12 @@ class App extends React.Component {
         //     return `${employee.name.first}${employee.name.last}${employee.email}${employee.phone}${employee.dob.date.substring(0, 10)}`
         // })
         // this.setState({ combinedString: combined })
-
     }
 
     onSearchChange = (term) => {
-        console.log(term.length)
-        console.log(term)
+        // console.log(term.length)
+        // console.log(term)
+        // console.log(this.state.filteredEmployees)
         let index = this.state.employees.filter(employee => {
             return employee.email.includes(term.toLowerCase()) || employee.phone.includes(term) || employee.dob.date.substring(0, 10).includes(term)
         })
@@ -34,7 +34,7 @@ class App extends React.Component {
     render() {
         return (
             <div className="ui container" style={{ marginTop: "10px" }}>
-                <SearchBar onChange={this.onSearchChange} />
+                <SearchBar onchange={this.onSearchChange} />
                 < EmployeeList employees={this.state.filteredEmployees.length > 0 ? this.state.filteredEmployees : this.state.employees} />
             </div >
         );
